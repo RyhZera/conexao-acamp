@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/my-output.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis:YEAR@1979&display=swap" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style/my-basic.css">
+    <link rel="icon" type="image/png" href="imgs/cnx-logo-fundo.webp">
+    <link rel="icon" type="image/png" sizes="32x32" href="imgs/cnx-logo-fundo.webp">
+    <link rel="icon" type="image/png" sizes="16x16" href="imgs/cnx-logo-fundo.webp">
+    <title>Conexão Acamp 2026 - Conexão e Renovação</title>
+</head>
+
+<body class="bg-betel-light text-betel-dark font-sans overflow-x-hidden">
+
+    <div id="welcome-toast" class="pointer-events-none">
+        <div class="toast-container pointer-events-auto group">
+            <div class="toast-content">
+                <div class="toast-icon-box group-hover:scale-110 transition-transform duration-300">
+                    <i data-lucide="bell-ring" class="w-6 h-6"></i>
+                </div>
+                <div class="flex-1">
+                    <h4 class="font-bold text-betel-dark text-sm uppercase tracking-widest flex items-center gap-2">
+                        <span class="flex h-2 w-2 rounded-full bg-betel-marrom animate-ping"></span>
+                    </h4>
+                    <p class="text-[14px] text-gray-600 font-medium leading-tight mt-1">
+                        Inscrições abertas para o <span class="text-betel-marrom
+                        font-bold">Conexão Acamp 2026</span>!
+                    </p>
+                </div>
+                <button onclick="hideToast()"
+                    class="text-gray-300 hover:text-betel-marrom transition-all hover:rotate-90 duration-300">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            <div class="h-[4px] bg-gray-100 w-full overflow-hidden">
+                <div id="toast-progress"
+                    class="h-full bg-gradient-to-r from-betel-marrom to-yellow-600 w-full transition-all duration-[7000ms] ease-linear">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <header id="main-header" class="fixed w-full z-[1000] glass-header opacity-0 -translate-y-full transition-all duration-1000 ease-out">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="w-12 h-12 flex items-center justify-center overflow-hidden">
+                    <a href="#inicio">
+                        <img src="imgs/cnx-logo.webp" alt="Logo AcampBetel" class="w-full h-full object-contain"
+                            loading="lazy">
+                    </a>
+                </div>
+            </div>
+
+            <div class="hidden md:flex items-center gap-8 font-semibold text-sm uppercase tracking-wider">
+                <a href="#inicio" class="nav-link">Inicio</a>
+                <a href="#sobre" class="nav-link">Sobre</a>
+                <a href="#faq" class="nav-link">Dúvidas</a>
+                <a href="#programacao" class="nav-link">Programação</a>
+                <a href="#inscricao" class="nav-link">Inscrição</a>
+                <a href="#faq" class="nav-link">Requisitos</a>
+                <a href="#inscricao"
+                    class="bg-betel-marrom text-white px-6 py-2 rounded-full hover:bg-betel-dark transition-colors btn-betel">Inscrição</a>
+            </div>
+
+            <button id="menu-btn"
+                class="md:hidden relative z-[101] flex flex-col justify-center items-center p-2 focus:outline-none"
+                aria-label="Abrir Menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </nav>
+
+        <div id="mobile-menu">
+            <a href="#sobre" class="mobile-link">
+                <i data-lucide="info" class="w-6 h-6 text-betel-marrom"></i>
+                Sobre
+            </a>
+            <a href="#programacao" class="mobile-link">
+                <i data-lucide="calendar" class="w-6 h-6 text-betel-marrom"></i>
+                Agenda
+            </a>
+            <a href="#inscricao" class="mobile-link">
+                <i data-lucide="check-circle" class="w-6 h-6 text-betel-marrom"></i>
+                Inscrição
+            </a>
+            <a href="#faq" class="mobile-link">
+                <i data-lucide="check-circle" class="w-6 h-6 text-betel-marrom"></i>
+                Requisitos
+            </a>
+            <div class="mt-12 flex flex-col items-center gap-4">
+                <p class="text-white/40 text-xs tracking-widest uppercase">Venha Participar!</p>
+            </div>
+        </div>
+    </header>
+
+
+    <section id="inicio" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <img src="imgs/cnx-hero.webp" alt="Imagem do Acampamento Betel" class="absolute inset-0 w-full h-full object-cover z-0" loading="lazy" fetchpriority="high">
+        <div class="absolute inset-0 bg-black/80 z-0"></div>
+
+        <div class="container mx-auto px-6 text-center text-white z-10">
+            <h1 class="font-ater text-5xl md:text-8xl mb-6 opacity-0 translate-y-10 transition-all duration-1000 delay-300 ease-out"
+                id="hero-title"> Conexão <span class="text-betel-mlit italic uppercase">Acamp</span></h1>
+                
+            <p class="text-lg md:text-xl mb-12 max-w-2xl mx-auto text-gray-200 opacity-0 transition-all duration-1000 delay-500 font-bold"
+                id="hero-subtitle">
+            </p>
+
+            <!-- Data Oficial -->
+             <div class="mb-8" data-aos="fade-up" data-aos-delay="900">
+                 <span class="bg-betel-marrom px-6 py-2 rounded-full text-sm md:text-base font-bold uppercase tracking-[0.2em] shadow-xl border border-white/20">
+                    <i class="fas fa-calendar-alt mr-2"></i> 26 de Junho de 2026
+                 </span>
+             </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto mb-12 opacity-0 transition-all duration-1000 delay-700"
+                id="hero-counter">
+                <div class="countdown-item p-4 rounded-2xl">
+                    <span id="days" class="text-3xl md:text-5xl font-bold text-white block">00</span>
+                    <span class="text-xs uppercase tracking-widest text-gray-300">Dias</span>
+                </div>
+                <div class="countdown-item p-4 rounded-2xl">
+                    <span id="hours" class="text-3xl md:text-5xl font-bold text-white block">00</span>
+                    <span class="text-xs uppercase tracking-widest text-gray-300">Horas</span>
+                </div>
+                <div class="countdown-item p-4 rounded-2xl">
+                    <span id="minutes" class="text-3xl md:text-5xl font-bold text-white block">00</span>
+                    <span class="text-xs uppercase tracking-widest text-gray-300">Minutos</span>
+                </div>
+                <div class="countdown-item p-4 rounded-2xl">
+                    <span id="seconds" class="text-3xl md:text-5xl font-bold text-white block">00</span>
+                    <span class="text-xs uppercase tracking-widest text-gray-300">Segundos</span>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 opacity-0 transition-all duration-1000 delay-900"
+                id="hero-btns">
+                <a href="#inscricao"
+                    class="w-full sm:w-auto bg-betel-mlit text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-betel-marrom transition-all btn-betel">Garantir
+                    minha vaga</a>
+                <a href="#sobre"
+                    class="w-full sm:w-auto border border-white/30 backdrop-blur-md px-10 py-4 rounded-full font-bold text-lg hover:bg-white/10 transition-all btn-betel">Nossa Historia</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Versículo do Dia -->
+    <section class="py-12 md:py-20 bg-betel-dark relative overflow-hidden">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-4xl mx-auto text-center reveal">
+                <i class="fas fa-quote-left text-betel-accent text-3xl md:text-4xl mb-6"></i>
+                <h2 class="text-xl md:text-3xl font-serif text-betel-light italic leading-relaxed mb-6 px-4" id="verse-text">
+                    "Eis que refinei você, mas não como a prata; eu o provei na fornalha da aflição."
+                </h2>
+                <p class="text-betel-accent font-bold tracking-widest text-sm md:text-base uppercase">Isaías 48:10 </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre" class="py-24 overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="w-full lg:w-1/2 relative" data-aos="fade-right">
+                    <div class="absolute -top-10 -left-10 w-40 h-40 bg-betel-marrom/10 rounded-full blur-3xl"></div>
+                    <img src="imgs/cnx-logo-fundo.webp" alt="Igreja e Natureza"
+                        class="rounded-3xl shadow-2xl relative z-10 animate-float" loading="lazy">
+                    <div
+                        class="absolute -bottom-6 -right-6 bg-betel-mlit p-8 rounded-2xl shadow-xl z-20 hidden md:block">
+                        <p class="text-white font-serif text-2xl">Desde 2024</p>
+                        <p class="text-white">Gerando Frutos</p>
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2" data-aos="fade-left">
+                    <span class="text-betel-marrom font-bold tracking-widest uppercase text-sm">Nossa História</span>
+                    <h2 class="text-4xl md:text-5xl font-bold mt-4 mb-8 text-betel-dark leading-tight">O Acampamento
+                        que <span class="text-betel-marrom font-serif italic">muda vidas</span></h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        O Conexão Acamp nasceu do desejo ardente de proporcionar um ambiente onde a rotina é deixada
+                        para trás e o foco total é voltado para a voz de Deus. Criado pela liderança da <strong>Igreja Batista Nacional Betel</strong>, o evento tornou-se o marco anual de renovo espiritual para centenas de jovens e adultos. O Conexão Acamp busca realizar cultos diferenciados nas casas dos irmãos da nossa igreja, sendo um evento voltado para toda a família.
+                    </p>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        Nosso objetivo é simples: conectar pessoas através da palavra, fortalecer vínculos através do
+                        lazer saudável e permitir que a natureza seja o cenário perfeito para milagres e decisões
+                        eternas.
+                    </p>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-10 h-10 rounded-full bg-betel-marrom/10 flex items-center justify-center text-betel-marrom">
+                                <i data-lucide="check-circle" class="w-5 h-5"></i>
+                            </div>
+                            <span class="font-semibold text-betel-dark">Espiritualidade</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-10 h-10 rounded-full bg-betel-marrom/10 flex items-center justify-center text-betel-marrom">
+                                <i data-lucide="users" class="w-5 h-5"></i>
+                            </div>
+                            <span class="font-semibold text-betel-dark">Comunhão</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-10 h-10 rounded-full bg-betel-marrom/10 flex items-center justify-center text-betel-marrom">
+                                <i data-lucide="flame" class="w-5 h-5"></i>
+                            </div>
+                            <span class="font-semibold text-betel-dark">Avivamento</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-10 h-10 rounded-full bg-betel-marrom/10 flex items-center justify-center text-betel-marrom">
+                                <i data-lucide="tree-pine" class="w-5 h-5"></i>
+                            </div>
+                            <span class="font-semibold text-betel-dark">Lazer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--PROGRAMAÇÃO-->
+    <section id="programacao" class="py-24 bg-white">
+        <div class="container mx-auto px-6 text-center mb-16" data-aos="fade-up">
+            <span class="text-betel-marrom font-bold tracking-widest uppercase text-sm">Cronograma</span>
+            <h2 class="text-4xl md:text-5xl font-bold mt-4 text-betel-dark">Programação do Evento</h2>
+        </div>
+
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Dia 1 -->
+            <div class="bg-betel-light p-8 rounded-3xl border border-gray-100 hover:shadow-xl transition-all"
+                data-aos="fade-up" data-aos-delay="100">
+                <div class="flex justify-between items-start mb-8">
+                    <span
+                        class="bg-betel-marrom text-white px-4 py-1 rounded-full text-xs font-bold uppercase">Sexta-feira (26/06)</span>
+                    <i data-lucide="calendar" class="text-betel-mlit w-6 h-6"></i>
+                </div>
+                <div class="space-y-6 text-left">
+                    <div class="group">
+                        <span class="text-betel-marrom font-bold text-sm">19:00h</span>
+                        <h4 class="font-bold text-betel-dark">Check-in e Acolhimento</h4>
+                        <p class="text-sm text-gray-500">Recepção dos acampantes e entrega de kits.</p>
+                    </div>
+                    <div class="group border-t border-gray-200 pt-4">
+                        <span class="text-betel-marrom font-bold text-sm">19:30h</span>
+                        <h4 class="font-bold text-betel-dark">Coffee Break</h4>
+                        <p class="text-sm text-gray-500">Coffee break de boas-vindas na chegada, com lanche e comunhão entre os participantes.</p>
+                    </div>
+                    <div class="group border-t border-gray-200 pt-4">
+                        <span class="text-betel-marrom font-bold text-sm">20:30h</span>
+                        <h4 class="font-bold text-betel-dark">Culto temático</h4>
+                        <p class="text-sm text-gray-500">Culto especial com tema inspirador, trazendo reflexão e comunhão através da Palavra.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dia 2 -->
+            <div class="bg-betel-dark p-8 rounded-3xl shadow-2xl scale-105 z-10 text-white" data-aos="fade-up"
+                data-aos-delay="200">
+                <div class="flex justify-between items-start mb-8">
+                    <span
+                        class="bg-betel-mlit text-white px-4 py-1 rounded-full text-xs font-bold uppercase">Sábado (27/06)</span>
+                    <i data-lucide="sun" class="text-betel-mlit w-6 h-6"></i>
+                </div>
+                <div class="space-y-6 text-left">
+                    <div class="group">
+                        <span class="text-betel-mlit font-bold text-sm">07:00h</span>
+                        <h4 class="font-bold">Café da Manhã</h4>
+                    </div>
+                    <div class="group border-t border-white/10 pt-4">
+                        <span class="text-betel-mlit font-bold text-sm">09:00h</span>
+                        <h4 class="font-bold">Culto Betel</h4>
+                    </div>
+                    <div class="group border-t border-white/10 pt-4">
+                        <span class="text-betel-mlit font-bold text-sm">12:00h</span>
+                        <h4 class="font-bold">Almoço Conexão</h4>
+                    </div>
+                    <div class="group border-t border-white/10 pt-4">
+                        <span class="text-betel-mlit font-bold text-sm">13:00h</span>
+                        <h4 class="font-bold">Tarde livre</h4>
+                    </div>
+                    <div class="group border-t border-white/10 pt-4">
+                        <span class="text-betel-mlit font-bold text-sm">17:00h</span>
+                        <h4 class="font-bold">Lanche da Tarde</h4>
+                    </div>
+                    <div class="group border-t border-white/10 pt-4">
+                        <span class="text-betel-mlit font-bold text-sm">18:30h</span>
+                        <h4 class="font-bold">Janta Conexão</h4>
+                    </div>
+                    <div class="group border-t border-white/10 pt-4">
+                        <span class="text-betel-mlit font-bold text-sm">20:00h</span>
+                        <h4 class="font-bold">Culto</h4>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dia 3 -->
+            <div class="bg-betel-light p-8 rounded-3xl border border-gray-100 hover:shadow-xl transition-all"
+                data-aos="fade-up" data-aos-delay="300">
+                <div class="flex justify-between items-start mb-8">
+                    <span
+                        class="bg-betel-mlit text-white px-4 py-1 rounded-full text-xs font-bold uppercase">Domingo (28/06)</span>
+                    <i data-lucide="sunrise" class="text-betel-marrom w-6 h-6"></i>
+                </div>
+                <div class="space-y-6 text-left">
+                    <div class="group">
+                        <span class="text-betel-marrom font-bold text-sm">07:00h</span>
+                        <h4 class="font-bold text-betel-dark">Café da manhã</h4>
+                        <p class="text-sm text-gray-500">Café da manhã para renovar as energias e começar bem o dia.</p>
+                    </div>
+                    <div class="group border-t border-gray-200 pt-4">
+                        <span class="text-betel-marrom font-bold text-sm">09:00h</span>
+                        <h4 class="font-bold text-betel-dark">Culto de encerramento </h4>
+                        <p class="text-sm text-gray-500">Culto de encerramento para celebrar, agradecer e finalizar o acampamento com Deus.</p>
+                    </div>
+                    <div class="group border-t border-gray-200 pt-4">
+                        <span class="text-betel-marrom font-bold text-sm">12/14h</span>
+                        <h4 class="font-bold text-betel-dark">Almoço e Despedidas</h4>
+                        <p class="text-sm text-gray-500">Almoço final seguido de despedidas e momentos de gratidão.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-betel-dark text-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-betel-marrom/10 rounded-full blur-[100px]"></div>
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <h2 class="text-4xl font-bold mb-6">Seja um <span class="text-white">Abençoador</span></h2>
+            <p class="max-w-2xl mx-auto mb-12 text-gray-400">Contribua para que nosso acampamento seja ainda mais
+                incrível e acessível a todos.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="p-8 border border-white/10 rounded-3xl hover:bg-white/5 transition-all cursor-pointer group"
+                    data-aos="zoom-in">
+                    <i data-lucide="heart"
+                        class="w-12 h-12 text-betel-light mx-auto mb-4 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="text-xl font-bold mb-2 text-white">Oferta Livre</h3>
+                    <p class="text-sm text-gray-400">Qualquer valor para ajudar na infraestrutura.</p>
+                </div>
+                <div class="p-8 border border-betel-mlit/50 rounded-3xl bg-betel-mlit/10 hover:bg-betel-mlit/20 transition-all cursor-pointer group"
+                    data-aos="zoom-in" data-aos-delay="100">
+                    <i data-lucide="toy-brick"
+                        class="w-12 h-12 text-betel-light mx-auto mb-4 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="text-xl font-bold mb-2 text-white">Ação Social</h3>
+                    <p class="text-sm text-gray-400">Doe brinquedos e alimentos para famílias carentes.</p>
+                </div>
+                <div class="p-8 border border-white/10 rounded-3xl hover:bg-white/5 transition-all cursor-pointer group"
+                    data-aos="zoom-in" data-aos-delay="200">
+                    <i data-lucide="graduation-cap"
+                        class="w-12 h-12 text-betel-light mx-auto mb-4 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="text-xl font-bold mb-2 text-white">Apadrinhe</h3>
+                    <p class="text-sm text-gray-400">Pague a inscrição de um jovem que não pode arcar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO: Código de Conduta (Novo Design de Grade Interativa) -->
+    <section id="faq" class="py-20 md:py-32 bg-white relative">
+        <div class="container mx-auto px-6 max-w-7xl">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-20">
+                <div class="lg:col-span-5 reveal">
+                    <span class="text-betel-accent font-bold uppercase tracking-widest text-xs mb-3 block">Valores Fundamentais</span>
+                    <h2 class="text-4xl md:text-5xl font-serif text-betel-dark mb-6 leading-tight font-bold">Como nos comportamos no <span class="text-betel-primary">Reino</span></h2>
+                    <p class="text-gray-600 text-base md:text-lg leading-relaxed">
+                        Nossa conduta reflete quem somos em Cristo. Zelamos por um ambiente onde o Espírito Santo se sinta à vontade para agir através de cada um de nós.
+                    </p>
+                    <div class="mt-8 flex items-center gap-4 text-betel-accent font-semibold italic">
+                        <i class="fas fa-quote-left text-2xl opacity-30"></i>
+                        <span class="font-bold">Zelo, respeito e amor ao próximo.</span>
+                    </div>
+                </div>
+
+                <!-- Grid de Cards de Conduta -->
+                <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6 reveal">
+                    
+                    <!-- Card 1 -->
+                    <div class="conduct-card bg-betel-light/30 p-8 rounded-[2.5rem] border border-betel-accent/10 relative overflow-hidden group">
+                        <span class="conduct-number absolute top-4 right-8 text-7xl font-bold opacity-60 group-hover:opacity-100 transition-opacity">01</span>
+                        <div class="w-14 h-14 bg-white rounded-2xl shadow-sm flex items-center justify-center text-betel-accent mb-6">
+                            <i class="fas fa-users text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-betel-dark mb-3">Relacionamentos</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            Amizades saudáveis e pureza. Respeitamos a individualidade e o espaço de cada irmão.
+                        </p>
+                        <div class="mt-6 flex gap-2">
+                            <div class="h-1 w-8 bg-betel-accent rounded-full"></div>
+                            <div class="h-1 w-2 bg-betel-accent/20 rounded-full"></div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="conduct-card bg-betel-marrom p-8 rounded-[2.5rem] text-white relative overflow-hidden group">
+                        <span class="conduct-number absolute top-4 right-8 text-7xl font-bold opacity-60 group-hover:opacity-100 transition-opacity" style="-webkit-text-stroke: 1px rgba(255,255,255,0.2)">02</span>
+                        <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center text-betel-light mb-6">
+                            <i class="fas fa-clock text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Pontualidade</h3>
+                        <p class="text-white/60 text-sm leading-relaxed">
+                            O cronograma é sagrado. Estar presente na hora certa é uma forma de honrar a Deus e os irmãos.
+                        </p>
+                        <div class="mt-6 flex gap-2">
+                            <div class="h-1 w-8 bg-white/20 rounded-full"></div>
+                            <div class="h-1 w-2 bg-white/10 rounded-full"></div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="conduct-card bg-betel-marrom p-8 rounded-[2.5rem] text-white relative overflow-hidden group">
+                        <span class="conduct-number absolute top-4 right-8 text-7xl font-bold opacity-60 group-hover:opacity-100 transition-opacity" style="-webkit-text-stroke: 1px rgba(255,255,255,0.2)">03</span>
+                        <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center text-betel-light mb-6">
+                            <i class="fas fa-leaf text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Zelo e Limpeza</h3>
+                        <p class="text-white/60 text-sm leading-relaxed">
+                            Cuidamos da natureza e das instalações. O local deve estar mais limpo do que quando chegamos.
+                        </p>
+                        <div class="mt-6 flex gap-2">
+                            <div class="h-1 w-8 bg-white/20 rounded-full"></div>
+                            <div class="h-1 w-2 bg-white/10 rounded-full"></div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="conduct-card bg-betel-light p-8 rounded-[2.5rem] border border-red-100 relative overflow-hidden group">
+                        <span class="conduct-number absolute top-4 right-8 text-7xl font-bold opacity-60 group-hover:opacity-100 transition-opacity" style="-webkit-text-stroke: 1px rgba(220, 38, 38, 0.3)">04</span>
+                        <div class="w-14 h-14 bg-white rounded-2xl shadow-sm flex items-center justify-center text-red-500 mb-6">
+                            <i class="fas fa-shield-alt text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-betel-dark mb-3">Restrições</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed">
+                            Proibido fumo, álcool ou qualquer item que fira a paz e a segurança do acampamento.
+                        </p>
+                        <div class="mt-6 flex gap-2">
+                            <div class="h-1 w-8 bg-red-200 rounded-full"></div>
+                            <div class="h-1 w-2 bg-red-100 rounded-full"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="inscricao" class="py-24 bg-betel-light">
+        <div class="container mx-auto px-6">
+            <div
+                class="max-w-6xl mx-auto bg-white rounded-[3rem] overflow-hidden shadow-2xl flex flex-col md:flex-row border border-gray-100">
+
+                <!-- Painel de Valor -->
+                <div class="w-full md:w-2/5 bg-betel-marrom p-12 text-white flex flex-col justify-center">
+                    <h2 class="text-4xl font-bold mb-4">Investimento</h2>
+                    <p class="text-white/70 mb-8">Tudo incluso: transporte, alimentação 5 estrelas e hospedagem.</p>
+
+                    <div class="mb-12">
+                        <span class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-betel-light break-words">R$149,99</span>
+                        <span class="text-xl opacity-60">/pessoa</span>
+                        <p class="mt-2 text-sm italic">Valor promocional para o 1º lote.</p>
+                        <p class="mt-4 text-sm bg-white/10 p-3 rounded-lg"><strong>Day One:</strong> Participe por apenas <span class="font-bold">R$49,99</span> (1 dia)</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="credit-card" class="text-betel-light"></i>
+                            <span>Aceitamos PIX, Cartão e Dinheiro</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="shield-check" class="text-betel-"></i>
+                            <span>Pagamento 100% Seguro</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full md:w-3/5 p-12">
+                    <h3 class="text-2xl font-bold text-betel-mdark mb-8">Garanta seu Lugar</h3>
+
+                    <div class="space-y-8">
+
+                        <div>
+                            <p
+                                class="text-gray-500 mb-4 font-semibold uppercase text-xs tracking-widest text-center md:text-left">
+                                O MELHOR EVENTO DA REGIÃO
+                            </p>
+                            <a href="https://www.even3.com.br/conexao-acamp-727031/"
+                                target="_blank"
+                                class="flex items-center justify-center gap-3 w-full md:w-auto bg-betel-marrom text-white py-4 md:py-5 px-6 rounded-2xl font-bold hover:opacity-90 transition-all btn-betel text-sm md:text-base">
+                                <i data-lucide="check-circle" class="w-6 h-6 md:w-6 md:h-6"></i>
+                                Participar Agora
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="mt-12 pt-8 border-t border-gray-100 flex items-center gap-4 text-sm text-gray-500">
+                        <i data-lucide="info" class="text-betel-marrom w-5 h-5 flex-shrink-0"></i>
+                        <p>Para participar do evento CONEXÃO ACAMP, basta realizar sua inscrição no botão acima. Assim, você será redirecionado ao site oficial de inscrição.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-betel-dark text-white py-16">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
+                <div class="flex items-center gap-3">
+                    <span class="text-2xl font-bold tracking-tighter">CONEXÃO ACAMP BETEL</span>
+                </div>
+
+                <div class="flex gap-6">
+                    <a href="https://www.instagram.com/crentequefazrir?igsh=cXR6OXpkbG1lbDNx&utm_source=qr"
+                        class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-betel-marrom transition-all" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://wa.me/5562998633428" target="_blank"
+                        class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-betel-marrom transition-all">
+                        <i class="fab fa-whatsapp"></i>
+                    </a> 
+                    <a href="https://github.com/RyhZera" target="_blank"
+                        class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-betel-marrom transition-all">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div
+                class="text-center md:text-left flex flex-col md:flex-row justify-between gap-8 border-t border-white/10 pt-12">
+                <div class="max-w-md">
+                    <p class="text-betel-light font-serif italic text-xl mb-4">"Nenhum de nós é tão bom quanto todos nós
+                        juntos."</p>
+                    <p class="text-white/50 text-sm italic">Organizado pelo Ministério de Juventude e Eventos da Igreja
+                        Batista Nacional Betel.</p>
+                </div>
+                <div class="text-white/50 text-sm flex flex-col gap-2">
+                    <p>&copy; 2026 Conexão Acamp. Todos os direitos reservados.</p>
+                    <p>Esse site foi desenvolvido com o proposito de promover<br> o evento oficial da Igreja Batista Nacional Betel.</p>
+                    <p>Desenvolvido por Ryhan Camilo: @ryhanxs_</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/my-basic.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</body>
+
+</html>
